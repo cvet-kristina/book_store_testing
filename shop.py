@@ -134,3 +134,38 @@
 #
 # driver.quit()
 
+# # Работа в корзине (для теста использовала книгу "Mastering JavaScript")
+# import time
+# from selenium import webdriver
+#
+# driver = webdriver.Chrome()
+# driver.maximize_window()
+# driver.get("http://practice.automationtesting.in/")
+#
+# menu_shop = driver.find_element_by_id("menu-item-40")
+# menu_shop.click()
+# driver.execute_script("window.scrollBy(0, 300);")
+# add_btn = driver.find_element_by_css_selector(".post-165  > a:nth-child(2)")
+# add_btn.click()
+# time.sleep(3)
+# basket_btn = driver.find_element_by_class_name("wpmenucart-contents")
+# basket_btn.click()
+# time.sleep(3)
+# product_remove = driver.find_element_by_css_selector("td.product-remove > a")
+# product_remove.click()
+# time.sleep(3)
+# undo = driver.find_element_by_css_selector(".woocommerce-message > a")
+# undo.click()
+# time.sleep(3)
+# quantity = driver.find_element_by_css_selector(" .quantity > input")
+# quantity.clear()
+# quantity.send_keys("3")
+# basket_update = driver.find_element_by_css_selector("[name='update_cart']")
+# basket_update.click()
+# time.sleep(3)
+# quantity = driver.find_element_by_css_selector(" .quantity > input")
+# quantity_value = quantity.get_attribute("value")
+# assert quantity_value == "3"
+# # пункт 11 не делала, так как в моём интерфейсе не возникает сообщение "Please enter a coupon code."
+#
+# driver.quit()
