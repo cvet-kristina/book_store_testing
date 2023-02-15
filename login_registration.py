@@ -8,9 +8,9 @@
 # my_account = driver.find_element_by_css_selector("#menu-item-50 > a")
 # my_account.click()
 # reg_email = driver.find_element_by_id("reg_email")
-# reg_email.send_keys("mail@mail.com")
+# reg_email.send_keys("super@mail.com")
 # reg_password = driver.find_element_by_id("reg_password")
-# reg_password.send_keys("ExtraPass!")
+# reg_password.send_keys("mypassissuper")
 # register_btn = driver.find_element_by_css_selector("[value='Register']")
 # register_btn.click()
 #
