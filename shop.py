@@ -19,3 +19,25 @@
 # assert book_title.text == "HTML5 Forms"
 #
 # driver.quit()
+
+# # Количество товаров в категории
+# from selenium import webdriver
+#
+# driver = webdriver.Chrome()
+# driver.maximize_window()
+# driver.get("http://practice.automationtesting.in/")
+#
+# my_account = driver.find_element_by_css_selector("#menu-item-50 > a")
+# my_account.click()
+# login = driver.find_element_by_id("username")
+# login.send_keys("super@mail.com")
+# log_password = driver.find_element_by_id("password")
+# log_password.send_keys("mypassissuper")
+# menu_shop = driver.find_element_by_id("menu-item-40")
+# menu_shop.click()
+# cat_html = driver.find_element_by_css_selector(".cat-item-19 > a")
+# cat_html.click()
+# cat_html_items = driver.find_elements_by_css_selector(".masonry-done > li")
+# assert len(cat_html_items) == 3
+#
+# driver.quit()
