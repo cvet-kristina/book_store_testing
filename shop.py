@@ -102,3 +102,35 @@
 # close_btn.click()
 #
 # driver.quit()
+
+# # Проверка цены в корзине (для теста использовала книгу "Mastering JavaScript)
+# import time
+# from selenium import webdriver
+# from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.support import expected_conditions as EC
+# from selenium.webdriver.common.by import By
+#
+# driver = webdriver.Chrome()
+# driver.maximize_window()
+# driver.get("http://practice.automationtesting.in/")
+#
+# menu_shop = driver.find_element_by_id("menu-item-40")
+# menu_shop.click()
+# add_btn = driver.find_element_by_css_selector(".post-165  > a:nth-child(2)")
+# add_btn.click()
+# time.sleep(3)
+# item_basket = driver.find_element_by_class_name("cartcontents")
+# assert item_basket.text == "1 Item"
+# price_basket = driver.find_element_by_css_selector(".wpmenucart-contents > .amount")
+# assert price_basket.text == "₹350.00"
+# basket_btn = driver.find_element_by_class_name("wpmenucart-contents")
+# basket_btn.click()
+# WebDriverWait(driver, 10).until(
+#     EC.text_to_be_present_in_element((By.CSS_SELECTOR, ".cart-subtotal > td > span"), "₹")
+# )
+# WebDriverWait(driver, 10).until(
+#     EC.text_to_be_present_in_element((By.CSS_SELECTOR, ".order-total > td > strong"), "₹")
+# )
+#
+# driver.quit()
+
