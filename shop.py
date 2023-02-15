@@ -169,3 +169,70 @@
 # # пункт 11 не делала, так как в моём интерфейсе не возникает сообщение "Please enter a coupon code."
 #
 # driver.quit()
+
+# Покупка товаров
+import time
+from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+
+driver = webdriver.Chrome()
+driver.maximize_window()
+driver.get("http://practice.automationtesting.in/")
+
+menu_shop = driver.find_element_by_id("menu-item-40")
+menu_shop.click()
+driver.execute_script("window.scrollBy(0, 300);")
+add_btn = driver.find_element_by_css_selector(".post-165  > a:nth-child(2)")
+add_btn.click()
+time.sleep(3)
+basket_btn = driver.find_element_by_class_name("wpmenucart-contents")
+basket_btn.click()
+checkout = WebDriverWait(driver, 10).until(
+    EC.element_to_be_clickable((By.CLASS_NAME, "checkout-button"))
+)
+checkout.click()
+
+first_name = driver.find_element_by_id("billing_first_name")
+first_name.send_keys("Kristina")
+last_name = driver.find_element_by_id("billing_last_name")
+last_name.send_keys("Cvet")
+email = driver.find_element_by_id("billing_email")
+email.send_keys("super@mail.com")
+phone = driver.find_element_by_id("billing_phone")
+phone.send_keys("88887778888")
+country_select_btn = driver.find_element_by_id("select2-chosen-1")
+country_select_btn.click()
+country_select_field = driver.find_element_by_id("s2id_autogen1_search")
+country_select_field.send_keys("Russia")
+time.sleep(3)
+country_select_russia = driver.find_element_by_class_name("select2-match")
+country_select_russia.click()
+adress = driver.find_element_by_css_selector("p #billing_address_1")
+adress.send_keys("Big Street")
+city = driver.find_element_by_css_selector("p #billing_city")
+city.send_keys("Saint-Petersburg")
+state = driver.find_element_by_id("billing_state")
+state.send_keys("Russia")
+postcode = driver.find_element_by_css_selector("p #billing_postcode")
+postcode.send_keys("197095")
+time.sleep(3)
+driver.execute_script("window.scrollBy(0, 600);")
+time.sleep(3)
+check_pay = driver.find_element_by_css_selector("li.payment_method_cheque > input")
+check_pay.click()
+driver.execute_script("window.scrollBy(0, 100);")
+place_order = driver.find_element_by_id("place_order")
+place_order.click()
+
+WebDriverWait(driver, 10).until(
+    EC.text_to_be_present_in_element
+    ((By.CLASS_NAME, "woocommerce-thankyou-order-received"), "Thank you. Your order has been received.")
+)
+WebDriverWait(driver, 10).until(
+    EC.text_to_be_present_in_element
+    ((By.CSS_SELECTOR, "ul.order_details .method"), "Check Payments")
+)
+
+driver.quit()
